@@ -1,0 +1,33 @@
+server:
+  port: ${PORT:8001}
+
+spring:
+  application:
+    name: product-service
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: product
+  cloud:
+    stream:
+      bindings:
+        productDeletedOutput:
+          destination: productDeletedInput
+          contentType: application/json
+        productUpdatedOutput:
+          destination: productUpdatedInput
+          contentType: application/json
+  rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    healthcheck:
+      enabled: false

@@ -1,0 +1,24 @@
+server:
+  port: ${PORT:8002}
+
+spring:
+  application:
+    name: shopping-list-service
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: shopping-list
+  rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    healthcheck:
+      enabled: false
